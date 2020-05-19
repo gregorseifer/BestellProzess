@@ -1,0 +1,30 @@
+{
+  "name": "bestellprozess",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "db": "json-server --watch .\\data\\db.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gregorseifer/BestellProzess.git"
+  },
+  "keywords": [],
+  "author": "Gregor Seifer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gregorseifer/BestellProzess/issues"
+  },
+  "homepage": "https://github.com/gregorseifer/BestellProzess#readme",
+  "dependencies": {
+    "camunda-external-task-client-js": "^2.0.0",
+    "http": "0.0.1-security",
+    "https": "^1.0.0",
+    "jquery": "^3.5.1"
+  },
+  "devDependencies": {
+    "open": "^7.0.4"
+  }
+}

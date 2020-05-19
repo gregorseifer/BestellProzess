@@ -1,0 +1,78 @@
+{
+
+	"customers": [
+		{
+			"id": 1,
+			"prename": "Callie",
+			"surname": "Oliver",
+			"loyalityScore": 7522,
+			"sales": 1000
+		},
+		{
+			"id": 2,
+			"prename": "Colleen",
+			"surname": "Alford",
+			"loyalityScore": 2222,
+			"sales": 0
+		},
+		{
+			"id": 3,
+			"prename": "Keefe",
+			"surname": "Williams",
+			"loyalityScore": 9000,
+			"sales": 1000
+		},
+		{
+			"id": 4,
+			"prename": "Elmo",
+			"surname": "Garza",
+			"loyalityScore": 1,
+			"sales": 555
+		},
+		{
+			"id": 5,
+			"prename": "Dennis",
+			"surname": "Holloway",
+			"loyalityScore": 100,
+			"sales": 10
+		},
+		{
+			"id": 6,
+			"prename": "Noel",
+			"surname": "Reyes",
+			"loyalityScore": 1000,
+			"sales": 1000
+		},
+		{
+			"id": 7,
+			"prename": "Fatima",
+			"surname": "Diaz",
+			"loyalityScore": 8002,
+			"sales": 0
+		},
+		{
+			"id": 8,
+			"prename": "Hedley",
+			"surname": "Cotton",
+			"loyalityScore": 10000,
+			"sales": 100
+		},
+		{
+			"id": 9,
+			"prename": "Quin",
+			"surname": "Aguirre",
+			"loyalityScore": 100,
+			"sales": 5000
+		},
+		{
+			"id": 10,
+			"prename": "Noel",
+			"surname": "Short",
+			"loyalityScore": 1000,
+			"sales": 0
+		}
+		],
+  	"profile": {
+    	"name": "orders"
+  }
+}
