@@ -1,6 +1,6 @@
 const { Client, logger } = require('camunda-external-task-client-js');
 const open = require('open');
-
+const { find } = require('./service/Kundendaten.service');
 // configuration for the Client:
 //  - 'baseUrl': url to the Process Engine
 //  - 'logger': utility to automatically log important events
@@ -11,14 +11,16 @@ const config = { baseUrl: 'http://localhost:8080/engine-rest', use: logger, asyn
 const client = new Client(config);
 
 // susbscribe to the topic: 'charge-card'
-client.subscribe('<platzhalter>', async ({ task, taskService }) => {
-  // Put your business logic here
-
-  // Get a process variable
-   const test = task.variables.get('test');
-
-  // Complete the task
-  await taskService.complete(task);
+client.subscribe('kundendaten', async ({ task, taskService }) => {
+    // Get a process variable
+    const prename = task.variables.get('prename');
+    const surname = task.variables.get('surname');
+    const result = await find(prename, surname);
+    // Complete the task
+    task.variables.set('id', result.id);
+    task.variables.set('loyalityScore', result.loyalityScore);
+    task.variables.set('sales', result.sales)
+    await taskService.complete(task);
 });
 
 client.subscribe('', async () => {

@@ -2,10 +2,11 @@
   "name": "bestellprozess",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": ".\\src\\index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db": "json-server --watch .\\data\\db.json"
+    "db": "json-server --watch .\\data\\db.json",
+    "start": "node .\\src\\index.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,7 @@
     "camunda-external-task-client-js": "^2.0.0",
     "http": "0.0.1-security",
     "https": "^1.0.0",
-    "jquery": "^3.5.1"
+    "json-server": "^0.16.1"
   },
   "devDependencies": {
     "open": "^7.0.4"
