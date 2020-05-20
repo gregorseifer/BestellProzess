@@ -1,13 +1,14 @@
-const { request } = require('http');
+import { request } from 'http';
+import { Kunde } from '../entity/types'
 
-const find = async (prename, surname) =>{
-    var options = {
+export const find = async (prename: string, surname: string) =>{
+    let options = {
         host: 'localhost',
         port: 3000,
         path: `/customers?prename=${prename}&surname=${surname}`,
         method: 'GET'
     };
-    let result;
+    let result: Kunde | undefined;
     request(options, (res) => {
         console.log('STATUS: ' + res.statusCode);
         console.log('HEADERS: ' + JSON.stringify(res.headers));

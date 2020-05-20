@@ -1,0 +1,1 @@
+export { Kunde } from './Kunde';
