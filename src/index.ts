@@ -1,5 +1,5 @@
 import { Client, logger } from 'camunda-external-task-client-js';
-import { find, sendeRechnung } from './service';
+import { findOne, logAbbruch, sendeRechnung } from './service';
 
 const config = { baseUrl: 'http://localhost:8080/engine-rest', use: logger, asyncResponseTimeout: 10000 };
 
@@ -11,7 +11,7 @@ client.subscribe('kundendaten', async ({ task, taskService }) => {
     // Get a process variable
     const prename = task.variables.get('prename');
     const surname = task.variables.get('surname');
-    const result = await find(prename, surname);
+    const result = await findOne(prename, surname);
     if (result === undefined) {
         const message = `${prename} ${surname} ist kein Kunde.`;
         await taskService.handleBpmnError(task,'1', message);
@@ -31,6 +31,14 @@ client.subscribe('rechnung', async ({ task, taskService}) => {
     const id = task .variables.get('id');
     const product = task.variables.get('product');
     const price = task.variables.get('price');
-    sendeRechnung({ prename, surname, id}, product, price);
+    sendeRechnung({ prename, surname, id }, product, price);
+    await taskService.complete(task);
+});
+
+client.subscribe('abbruch', async({ task, taskService}) => {
+    const prename = task.variables.get('prename');
+    const surname = task.variables.get('surname');
+    const product = task.variables.get('product');
+    logAbbruch(prename, surname, product);
     await taskService.complete(task);
 });
