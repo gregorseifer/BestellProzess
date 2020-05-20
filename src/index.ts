@@ -13,7 +13,9 @@ client.subscribe('kundendaten', async ({ task, taskService }) => {
     const surname = task.variables.get('surname');
     const result = await find(prename, surname);
     if (result === undefined) {
-        await taskService.handleFailure(task)
+        const message = `${prename} ${surname} ist kein Kunde.`;
+        await taskService.handleBpmnError(task,'1', message);
+        console.log(`BpmnError: message=${message}`);
     } else {
         // Complete the task
         task.variables.set('id', result.id);
