@@ -5,7 +5,7 @@ export const logAbbruch = async (
     surname: string,
     product: string,
 ) => {
-    const data = `${Date.now} Abbruch: ${prename} ${surname}: ${product} \n`;
+    const data = `Abbruch: ${prename} ${surname}: ${product} \n`;
     fs.appendFile('abbruch.log', data, 'utf8', (err) => {
         console.error(JSON.stringify(err));
     });

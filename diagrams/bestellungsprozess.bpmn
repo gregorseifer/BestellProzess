@@ -128,10 +128,6 @@
       <bpmn:incoming>Flow_0uz203g</bpmn:incoming>
       <bpmn:outgoing>Flow_0qzsmt4</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:task id="Activity_0g0rnkq" name="Versand">
-      <bpmn:incoming>Flow_1bmk66a</bpmn:incoming>
-      <bpmn:outgoing>Flow_0w86z4k</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_0zchnfr" sourceRef="Activity_1illrq6" targetRef="Gateway_0r8fqyw" />
     <bpmn:endEvent id="Event_0sxxvh0">
       <bpmn:incoming>Flow_0qz8z07</bpmn:incoming>
@@ -141,6 +137,10 @@
       <bpmn:outgoing>Flow_0qz8z07</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_1xao6p8" errorRef="Error_05fds54" />
     </bpmn:boundaryEvent>
+    <bpmn:serviceTask id="Activity_0g0rnkq" name="Versand" camunda:type="external" camunda:topic="versand">
+      <bpmn:incoming>Flow_1bmk66a</bpmn:incoming>
+      <bpmn:outgoing>Flow_0w86z4k</bpmn:outgoing>
+    </bpmn:serviceTask>
   </bpmn:process>
   <bpmn:error id="Error_05fds54" name="kein_kunde" errorCode="1" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -283,11 +283,11 @@
       <bpmndi:BPMNShape id="Activity_0bhk8jj_di" bpmnElement="Activity_0s9nh1q">
         <dc:Bounds x="1080" y="380" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0tbgi1u_di" bpmnElement="Activity_0g0rnkq">
-        <dc:Bounds x="1400" y="380" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0sxxvh0_di" bpmnElement="Event_0sxxvh0">
         <dc:Bounds x="602" y="642" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0q4jeve_di" bpmnElement="Activity_0g0rnkq">
+        <dc:Bounds x="1400" y="380" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1aixoxa_di" bpmnElement="Event_1ikqxqj">
         <dc:Bounds x="602" y="442" width="36" height="36" />
