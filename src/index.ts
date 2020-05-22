@@ -1,5 +1,5 @@
 import { Client, logger, Variables } from 'camunda-external-task-client-js';
-import { findOne, logAbbruch, sendeRechnung } from './service';
+import { calculateDiscount, findOne, logAbbruch, sendeRechnung } from './service';
 
 const config = { baseUrl: 'http://localhost:8080/engine-rest', use: logger, asyncResponseTimeout: 10000 };
 
@@ -43,4 +43,10 @@ client.subscribe('abbruch', async({ task, taskService}) => {
     const product = task.variables.get('product');
     logAbbruch(prename, surname, product);
     await taskService.complete(task);
+});
+
+client.subscribe('discount', async({ task, taskService}) => {
+    const price = calculateDiscount(task.variables.get('price'));
+    const variables: Variables = new Variables().setAll({ price });
+    await taskService.complete(task, variables);
 });
