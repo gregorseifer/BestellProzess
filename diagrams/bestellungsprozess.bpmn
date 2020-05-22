@@ -86,7 +86,7 @@
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_09ou12u" sourceRef="Activity_1k5p91k" targetRef="Gateway_0gmu3ac" />
     <bpmn:sequenceFlow id="Flow_0uz203g" name="ja" sourceRef="Gateway_0gmu3ac" targetRef="Activity_0s9nh1q">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${rabatt== true}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${discount!= 0}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:exclusiveGateway id="Gateway_1pro2vt">
       <bpmn:incoming>Flow_1ex7zyh</bpmn:incoming>
@@ -94,7 +94,7 @@
       <bpmn:outgoing>Flow_1bmk66a</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:sequenceFlow id="Flow_1ex7zyh" name="nein" sourceRef="Gateway_0gmu3ac" targetRef="Gateway_1pro2vt">
-      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${rabatt== false}</bpmn:conditionExpression>
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${discount== 0}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
     <bpmn:sequenceFlow id="Flow_0qzsmt4" sourceRef="Activity_0s9nh1q" targetRef="Gateway_1pro2vt" />
     <bpmn:sequenceFlow id="Flow_1bmk66a" sourceRef="Gateway_1pro2vt" targetRef="Activity_0g0rnkq" />
@@ -118,7 +118,7 @@
     <bpmn:userTask id="Activity_1k5p91k" name="Über Rabatt entscheiden" camunda:assignee="demo">
       <bpmn:extensionElements>
         <camunda:formData>
-          <camunda:formField id="rabatt" label="Rabatt?" type="boolean" />
+          <camunda:formField id="discount" label="Rabatt? in %" type="long" defaultValue="0" />
           <camunda:formField id="showScore" label="Score" type="string" defaultValue="${loyalityScore}">
             <camunda:validation>
               <camunda:constraint name="readonly" />

@@ -56,7 +56,8 @@ client.subscribe('discount', async({ task, taskService}) => {
     const surname = task.variables.get('surname');
     const product = task.variables.get('product');
     const priceOld = task.variables.get('price');
-    const price = calculateDiscount(priceOld, prename, surname, product);
+    const discount = task.variables.get('discount');
+    const price = calculateDiscount(priceOld, prename, surname, product, discount);
     const variables: Variables = new Variables().setAll({ price });
     await taskService.complete(task, variables);
 });
