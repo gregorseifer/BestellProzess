@@ -46,7 +46,11 @@ client.subscribe('abbruch', async({ task, taskService}) => {
 });
 
 client.subscribe('discount', async({ task, taskService}) => {
-    const price = calculateDiscount(task.variables.get('price'));
+    const prename = task.variables.get('prename');
+    const surname = task.variables.get('surname');
+    const product = task.variables.get('product');
+    const priceOld = task.variables.get('price');
+    const price = calculateDiscount(priceOld, prename, surname, product);
     const variables: Variables = new Variables().setAll({ price });
     await taskService.complete(task, variables);
 });

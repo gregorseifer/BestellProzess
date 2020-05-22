@@ -1,4 +1,5 @@
 import { Kunde } from '../entity/types';
+import { fn_getTimeStamp } from './TimeStamp';
 import fs from 'fs';
 
 export const sendeRechnung = (
@@ -6,8 +7,8 @@ export const sendeRechnung = (
     produkt: string,
     price: string,
 ) => {
-    let data = `Rechnung\nVorname: ${kunde.prename} Nachname: ${kunde.surname} ID: ${kunde.id}\nProdukt: ${produkt} - ${price}\n\n`;
-    fs.appendFile('rechnung.log', data, 'utf8', (err) => {
+    let data = `${fn_getTimeStamp()}Rechnung\nVorname: ${kunde.prename} Nachname: ${kunde.surname} ID: ${kunde.id}\nProdukt: ${produkt} - ${price}\n\n`;
+    fs.appendFile('prozesslog.log', data, 'utf8', (err) => {
         console.error(err)
     });
     console.log(data);
