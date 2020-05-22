@@ -13,13 +13,33 @@
       <bpmn:outgoing>Flow_0qpnvb1</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_0qpnvb1" sourceRef="StartEvent_1" targetRef="Activity_1ncy9z1" />
-    <bpmn:userTask id="Activity_1ncy9z1" name="Prüfen der Bestellung">
+    <bpmn:userTask id="Activity_1ncy9z1" name="Prüfen der Bestellung" camunda:assignee="demo">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="ok" label="Daten sind ok!" type="boolean">
             <camunda:properties>
               <camunda:property id="Vorname" value="${vorname}" />
             </camunda:properties>
+          </camunda:formField>
+          <camunda:formField id="showPrename" label="Vorname" type="string" defaultValue="${prename}">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="showSurame" label="Nachname" type="string" defaultValue="${surname}">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="showProduct" label="Produkt" type="string" defaultValue="${product}">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="showPrice" label="Preis" type="string" defaultValue="${price}">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
           </camunda:formField>
         </camunda:formData>
       </bpmn:extensionElements>
@@ -89,10 +109,15 @@
       <bpmn:outgoing>Flow_0qkhg4k</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0qkhg4k" sourceRef="Activity_0j6au6i" targetRef="Event_1o8rcay" />
-    <bpmn:userTask id="Activity_1k5p91k" name="Über Rabatt entscheiden">
+    <bpmn:userTask id="Activity_1k5p91k" name="Über Rabatt entscheiden" camunda:assignee="demo">
       <bpmn:extensionElements>
         <camunda:formData>
           <camunda:formField id="rabatt" label="Rabatt?" type="boolean" />
+          <camunda:formField id="showScore" label="Score" type="string" defaultValue="${loyalityScore}">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0p7tt44</bpmn:incoming>
