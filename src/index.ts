@@ -25,7 +25,7 @@ client.subscribe('kundendaten', async ({ task, taskService }) => {
     }
 });
 
-client.subscribe('rechnung', async ({ task, taskService}) => {
+client.subscribe('rechnung', async ({ task, taskService }) => {
     const prename = task.variables.get('prename');
     const surname = task.variables.get('surname');
     const id = task .variables.get('id');
@@ -35,7 +35,7 @@ client.subscribe('rechnung', async ({ task, taskService}) => {
     await taskService.complete(task);
 });
 
-client.subscribe('abbruch', async({ task, taskService}) => {
+client.subscribe('abbruch', async ({ task, taskService }) => {
     const prename = task.variables.get('prename');
     const surname = task.variables.get('surname');
     const product = task.variables.get('product');
