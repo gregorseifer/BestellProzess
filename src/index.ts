@@ -1,4 +1,4 @@
-import { Client, logger } from 'camunda-external-task-client-js';
+import { Client, logger, Variables } from 'camunda-external-task-client-js';
 import { findOne, logAbbruch, sendeRechnung } from './service';
 
 const config = { baseUrl: 'http://localhost:8080/engine-rest', use: logger, asyncResponseTimeout: 10000 };
@@ -18,10 +18,12 @@ client.subscribe('kundendaten', async ({ task, taskService }) => {
         console.log(`BpmnError: message=${message}`);
     } else {
         // Complete the task
-        task.variables.set('id', result.id);
-        task.variables.set('loyalityScore', result.loyalityScore);
-        task.variables.set('sales', result.sales)
-        await taskService.complete(task);
+        const variables: Variables = new Variables().setAll({ 
+            id: result.id, 
+            loyalityScore: result.loyalityScore, 
+            sales: result.sales
+        }); 
+        await taskService.complete(task, variables);
     }
 });
 
