@@ -17,7 +17,7 @@ client.subscribe('kundendaten', async ({ task, taskService }) => {
     if (result === undefined) {
         const message = `${prename} ${surname} ist kein Kunde.`;
         await taskService.handleBpmnError(task,'1', message);
-        fs.appendFile('prozesslog.log', `Fehler: ${fn_getTimeStamp()} ${message}`, 'utf8', (err) => {
+        fs.appendFile('prozesslog.log', `${fn_getTimeStamp()}Fehler: ${message}\n\n`, 'utf8', (err) => {
             console.error(err)
         });
         console.log(`BpmnError: message=${message}`);
@@ -39,7 +39,8 @@ client.subscribe('rechnung', async ({ task, taskService}) => {
     const product = task.variables.get('product');
     const price = task.variables.get('price');
     const amount = task.variables.get('amount');
-    sendeRechnung({ prename, surname, id }, product, price, amount);
+    const discount = task.variables.get('discount');
+    sendeRechnung({ prename, surname, id }, product, price, amount, discount);
     await taskService.complete(task);
 });
 

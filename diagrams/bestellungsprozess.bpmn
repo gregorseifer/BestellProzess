@@ -4,11 +4,34 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:extensionElements>
         <camunda:formData>
-          <camunda:formField id="prename" label="Vorname" type="string" />
-          <camunda:formField id="surname" label="Nachname" type="string" />
-          <camunda:formField id="product" label="Produkt" type="string" />
-          <camunda:formField id="amount" label="Menge" type="long" />
-          <camunda:formField id="price" label="Gesamtpreis" type="long" />
+          <camunda:formField id="prename" label="Vorname" type="string">
+            <camunda:validation>
+              <camunda:constraint name="required" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="surname" label="Nachname" type="string">
+            <camunda:validation>
+              <camunda:constraint name="required" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="product" label="Produkt" type="string">
+            <camunda:validation>
+              <camunda:constraint name="required" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="amount" label="Menge" type="long">
+            <camunda:validation>
+              <camunda:constraint name="min" config="1" />
+              <camunda:constraint name="max" config="1000" />
+              <camunda:constraint name="required" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="price" label="Gesamtpreis" type="long">
+            <camunda:validation>
+              <camunda:constraint name="min" config="1" />
+              <camunda:constraint name="required" />
+            </camunda:validation>
+          </camunda:formField>
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:outgoing>Flow_0qpnvb1</bpmn:outgoing>
@@ -118,7 +141,12 @@
     <bpmn:userTask id="Activity_1k5p91k" name="Über Rabatt entscheiden" camunda:assignee="demo">
       <bpmn:extensionElements>
         <camunda:formData>
-          <camunda:formField id="discount" label="Rabatt? in %" type="long" defaultValue="0" />
+          <camunda:formField id="discount" label="Rabatt? in %" type="long" defaultValue="0">
+            <camunda:validation>
+              <camunda:constraint name="required" />
+              <camunda:constraint name="max" config="100" />
+            </camunda:validation>
+          </camunda:formField>
           <camunda:formField id="showScore" label="Score" type="string" defaultValue="${loyalityScore}">
             <camunda:validation>
               <camunda:constraint name="readonly" />
