@@ -1,24 +1,14 @@
-import { request } from 'http';
+import fetch from 'node-fetch';
 import { Kunde } from '../entity/types'
 
 export const findOne = async (prename: string, surname: string) =>{
-    let options = {
-        host: 'localhost',
-        port: 3000,
-        path: `/customers?prename=${prename}&surname=${surname}`,
-        method: 'GET',
-    };
-    let result: Kunde | undefined;
-    request(options, (res) => {
-        console.log('STATUS: ' + res.statusCode);
-        console.log('HEADERS: ' + JSON.stringify(res.headers));
-        res.setEncoding('utf8');
-        res.on('data',  (body) => {
-            console.log(body);
-            result = JSON.parse(body)[0];
-            console.log(result);
-        });
-    }).end();
+    var result: Kunde | undefined;    
+    const body = await fetch(
+            `http://localhost:3000/customers?prename=${prename}&surname=${surname}`
+    )
+    .then( res => res.json())
+    .then( data =>  data );
 
+    result = body[0];
     return result;
 };

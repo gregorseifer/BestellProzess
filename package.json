@@ -21,10 +21,12 @@
   },
   "homepage": "https://github.com/gregorseifer/BestellProzess#readme",
   "dependencies": {
+    "@types/node-fetch": "^2.5.7",
     "camunda-external-task-client-js": "^2.0.0",
     "http": "0.0.1-security",
     "https": "^1.0.0",
     "json-server": "^0.16.1",
+    "node-fetch": "^2.6.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {

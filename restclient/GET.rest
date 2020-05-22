@@ -1,0 +1,7 @@
+//REST
+@host = localhost
+
+POST http://{{host}}:8080/engine-rest/process-definition/key/bestellprozess/start
+Content-Type: application/json
+
+< .\test.json
