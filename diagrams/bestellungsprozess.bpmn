@@ -7,7 +7,8 @@
           <camunda:formField id="prename" label="Vorname" type="string" />
           <camunda:formField id="surname" label="Nachname" type="string" />
           <camunda:formField id="product" label="Produkt" type="string" />
-          <camunda:formField id="price" label="Preis" type="long" />
+          <camunda:formField id="amount" label="Menge" type="long" />
+          <camunda:formField id="price" label="Gesamtpreis" type="long" />
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:outgoing>Flow_0qpnvb1</bpmn:outgoing>
@@ -36,7 +37,12 @@
               <camunda:constraint name="readonly" />
             </camunda:validation>
           </camunda:formField>
-          <camunda:formField id="showPrice" label="Preis" type="string" defaultValue="${price}">
+          <camunda:formField id="showAmount" label="Menge" type="long" defaultValue="${amount}">
+            <camunda:validation>
+              <camunda:constraint name="readonly" />
+            </camunda:validation>
+          </camunda:formField>
+          <camunda:formField id="showPrice" label="Gesamtpreis" type="string" defaultValue="${price}">
             <camunda:validation>
               <camunda:constraint name="readonly" />
             </camunda:validation>

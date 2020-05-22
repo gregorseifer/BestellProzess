@@ -1,4 +1,6 @@
 import { Client, logger, Variables } from 'camunda-external-task-client-js';
+import { fn_getTimeStamp } from './service/TimeStamp';
+import fs from 'fs';
 import { calculateDiscount, findOne, logAbbruch, sendeRechnung, versendeProdukt } from './service';
 
 const config = { baseUrl: 'http://localhost:8080/engine-rest', use: logger, asyncResponseTimeout: 10000 };
@@ -15,6 +17,9 @@ client.subscribe('kundendaten', async ({ task, taskService }) => {
     if (result === undefined) {
         const message = `${prename} ${surname} ist kein Kunde.`;
         await taskService.handleBpmnError(task,'1', message);
+        fs.appendFile('prozesslog.log', `Fehler: ${fn_getTimeStamp()} ${message}`, 'utf8', (err) => {
+            console.error(err)
+        });
         console.log(`BpmnError: message=${message}`);
     } else {
         // Complete the task
@@ -33,7 +38,8 @@ client.subscribe('rechnung', async ({ task, taskService}) => {
     const id = task .variables.get('id');
     const product = task.variables.get('product');
     const price = task.variables.get('price');
-    sendeRechnung({ prename, surname, id }, product, price);
+    const amount = task.variables.get('amount');
+    sendeRechnung({ prename, surname, id }, product, price, amount);
     await taskService.complete(task);
 });
 
