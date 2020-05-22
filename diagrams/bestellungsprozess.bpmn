@@ -7,7 +7,7 @@
           <camunda:formField id="prename" label="Vorname" type="string" />
           <camunda:formField id="surname" label="Nachname" type="string" />
           <camunda:formField id="product" label="Produkt" type="string" />
-          <camunda:formField id="price" label="Preis" type="string" />
+          <camunda:formField id="price" label="Preis" type="long" />
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:outgoing>Flow_0qpnvb1</bpmn:outgoing>
@@ -98,7 +98,7 @@
       <bpmn:incoming>Flow_0p7tt44</bpmn:incoming>
       <bpmn:outgoing>Flow_09ou12u</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="Activity_0s9nh1q" name="Rabatt gewähren" camunda:type="external" camunda:topic="rabatt">
+    <bpmn:serviceTask id="Activity_0s9nh1q" name="Rabatt gewähren" camunda:type="external" camunda:topic="discount">
       <bpmn:incoming>Flow_103xmrl</bpmn:incoming>
       <bpmn:incoming>Flow_0uz203g</bpmn:incoming>
       <bpmn:outgoing>Flow_0qzsmt4</bpmn:outgoing>
