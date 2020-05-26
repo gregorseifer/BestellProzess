@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import { Kunde } from '../entity/types'
 
-export const findOne = async (prename: string, surname: string) =>{
+export const findOne = async (prename: string, surname: string) => {
     var result: Kunde | undefined;    
     const body = await fetch(
             `http://localhost:3000/customers?prename=${prename}&surname=${surname}`
