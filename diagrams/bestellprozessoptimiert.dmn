@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/DMN/20151101/dmn.xsd" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/1.0" id="Definitions_0cuzumr" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="3.7.3">
+  <decision id="discount_decision" name="discount_decision">
+    <extensionElements>
+      <biodi:bounds x="150" y="150" width="180" height="80" />
+    </extensionElements>
+    <decisionTable id="decisionTable_1">
+      <input id="input_1" label="LoyalityScore">
+        <inputExpression id="inputExpression_1" typeRef="integer">
+          <text>loyalityScore</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1k05by5" label="Sales">
+        <inputExpression id="LiteralExpression_00x7gzs" typeRef="integer">
+          <text>sales</text>
+        </inputExpression>
+      </input>
+      <output id="output_1" label="Rabatt" name="discount" typeRef="integer" />
+      <rule id="DecisionRule_0vk09sp">
+        <inputEntry id="UnaryTests_1wr4bc8">
+          <text>&gt;= 2000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ml1y2f">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ppbhzj">
+          <text>10</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_117iouk">
+        <inputEntry id="UnaryTests_166131l">
+          <text>&lt;2000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zhozav">
+          <text>&gt;=1000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0z5kcoc">
+          <text>5</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0l7sjfy">
+        <inputEntry id="UnaryTests_09ooplt">
+          <text>&lt;2000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_13ngiot">
+          <text>&lt;1000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1hx4e1y">
+          <text>0</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
