@@ -2,5 +2,6 @@
     "prename": "Elmo",
     "surname": "Garza",
     "product": "test",
-    "price": "5"
+    "amount": 1,
+    "price": 10
 }
