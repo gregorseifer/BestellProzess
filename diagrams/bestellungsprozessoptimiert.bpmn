@@ -127,7 +127,7 @@
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0qzsmt4" sourceRef="Activity_0s9nh1q" targetRef="Activity_0g0rnkq" />
     <bpmn:sequenceFlow id="Flow_0bxhqb7" sourceRef="Activity_1illrq6" targetRef="Activity_0xefs6z" />
-    <bpmn:businessRuleTask id="Activity_0xefs6z" name="Rabatt bestimmn" camunda:resultVariable="discount" camunda:decisionRef="discount_decision" camunda:mapDecisionResult="singleEntry">
+    <bpmn:businessRuleTask id="Activity_0xefs6z" name="Rabatt bestimmen" camunda:resultVariable="discount" camunda:decisionRef="discount_decision" camunda:mapDecisionResult="singleEntry">
       <bpmn:incoming>Flow_0bxhqb7</bpmn:incoming>
       <bpmn:outgoing>Flow_1r505wt</bpmn:outgoing>
     </bpmn:businessRuleTask>
@@ -177,6 +177,11 @@
   <bpmn:error id="Error_05fds54" name="kein_kunde" errorCode="1" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="BestellprozessOptimiert">
+      <bpmndi:BPMNEdge id="Flow_0tr09qu_di" bpmnElement="Flow_0tr09qu">
+        <di:waypoint x="920" y="660" />
+        <di:waypoint x="1130" y="660" />
+        <di:waypoint x="1130" y="460" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_061vpjv_di" bpmnElement="Flow_061vpjv">
         <di:waypoint x="650" y="478" />
         <di:waypoint x="650" y="660" />
@@ -234,12 +239,6 @@
       <bpmndi:BPMNEdge id="Flow_0qpnvb1_di" bpmnElement="Flow_0qpnvb1">
         <di:waypoint x="188" y="420" />
         <di:waypoint x="250" y="420" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0tr09qu_di" bpmnElement="Flow_0tr09qu">
-        <di:waypoint x="920" y="660" />
-        <di:waypoint x="1000" y="660" />
-        <di:waypoint x="1000" y="420" />
-        <di:waypoint x="1080" y="420" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
         <dc:Bounds x="152" y="402" width="36" height="36" />
