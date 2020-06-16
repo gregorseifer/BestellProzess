@@ -108,10 +108,7 @@
       <bpmn:outgoing>Flow_0qkhg4k</bpmn:outgoing>
     </bpmn:serviceTask>
     <bpmn:sequenceFlow id="Flow_0qkhg4k" sourceRef="Activity_0j6au6i" targetRef="Event_1o8rcay" />
-    <bpmn:endEvent id="Event_0sxxvh0">
-      <bpmn:incoming>Flow_0qz8z07</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_0qz8z07" name="Kunde nicht vorhanden!" sourceRef="Event_1ikqxqj" targetRef="Event_0sxxvh0" />
+    <bpmn:sequenceFlow id="Flow_0qz8z07" name="Kunde nicht vorhanden!" sourceRef="Event_1ikqxqj" targetRef="Activity_1om6eyv" />
     <bpmn:boundaryEvent id="Event_1ikqxqj" attachedToRef="Activity_1illrq6">
       <bpmn:outgoing>Flow_0qz8z07</bpmn:outgoing>
       <bpmn:errorEventDefinition id="ErrorEventDefinition_1xao6p8" errorRef="Error_05fds54" />
@@ -170,6 +167,7 @@
         </camunda:formData>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_061vpjv</bpmn:incoming>
+      <bpmn:incoming>Flow_0qz8z07</bpmn:incoming>
       <bpmn:outgoing>Flow_0tr09qu</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="Flow_0tr09qu" sourceRef="Activity_1om6eyv" targetRef="Activity_0s9nh1q" />
@@ -201,9 +199,10 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0qz8z07_di" bpmnElement="Flow_0qz8z07">
         <di:waypoint x="590" y="478" />
-        <di:waypoint x="590" y="642" />
+        <di:waypoint x="590" y="680" />
+        <di:waypoint x="820" y="680" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="520" y="514" width="60" height="27" />
+          <dc:Bounds x="590" y="686" width="60" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0qkhg4k_di" bpmnElement="Flow_0qkhg4k">
@@ -269,9 +268,6 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0rhvdsr_di" bpmnElement="Activity_0j6au6i">
         <dc:Bounds x="410" y="160" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0sxxvh0_di" bpmnElement="Event_0sxxvh0">
-        <dc:Bounds x="572" y="642" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0q4jeve_di" bpmnElement="Activity_0g0rnkq">
         <dc:Bounds x="1400" y="380" width="100" height="80" />
